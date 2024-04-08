@@ -3,26 +3,36 @@ import { TodoItem } from './TodoItem';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoLists';
 import { CreateTodoButton } from './CreateTodoButton';
-import './App.css';
+import React from 'react';
+
+const defaultTodos = [
+  { text: 'Comer Queso', completed: false },
+  { text: 'Llorar 5 minutos', completed: true },
+  { text: 'Jugar Paladins', completed: false },
+];
 
 function App() {
   return (
-    <div className="App">
+    <>
 
-      <TodoCounter />
+      <TodoCounter total={6} completed={3} />
       <TodoSearch />
 
 
       <TodoList>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {defaultTodos.map(todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+        ))}
       </TodoList>
 
       <CreateTodoButton />
 
 
-    </div>
+    </>
   );
 }
 
