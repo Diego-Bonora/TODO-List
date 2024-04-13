@@ -1,0 +1,37 @@
+.EmptyTodos-message {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.Arrow-movement {
+  position: fixed;
+  width: 10%;
+  height: 10%;
+  animation: arrow-movement 3s infinite alternate;
+}
+
+.Arrow-container {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+}
+
+.Arrow {
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes arrow-movement {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
