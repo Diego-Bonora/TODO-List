@@ -8,6 +8,8 @@
   position: fixed;
   width: 10%;
   height: 10%;
+  display: flex;
+  align-items: center;
   animation: arrow-movement 3s infinite alternate;
 }
 
