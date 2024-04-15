@@ -16,12 +16,44 @@ function TodoProvider({ children }) {
     const completedTodos = todos.filter(todo => !!todo.completed).length;
     const totalTodos = todos.length;
 
+    const sortTodoText = (todo, ascending) => {
+        return todo.slice().sort((a, b) => {
+            const order = ascending ? 1 : -1;
+            return order * a.text.localeCompare(b.text);
+        });
+    };
+
+    const sortTodoCompleted = (todo, completed) => {
+        return todo.filter((item) => {
+            return completed ? !item.completed : item.completed;
+        });
+    };
+
     const searchedTodos = todos.filter(
         (todo) => {
             const todoText = todo.text.toLowerCase()
             const todoSearch = searchValue.toLowerCase()
             return todoText.includes(todoSearch)
         });
+
+    const [filterTodo, setFilterTodo] = React.useState('')
+
+    const handleFilter = (todos, filterType) => {
+        switch (filterType) {
+            case 'sortAZ':
+                return sortTodoText(todos, true);
+            case 'sortZA':
+                return sortTodoText(todos, false);
+            case 'sortTrue':
+                return sortTodoCompleted(todos, true);
+            case 'sortFalse':
+                return sortTodoCompleted(todos, false);
+            default:
+                return todos;
+        }
+    }
+
+    let listTodos = handleFilter(searchedTodos, filterTodo);
 
     const addTodo = (text) => {
         const newTodos = [...todos];
@@ -58,6 +90,8 @@ function TodoProvider({ children }) {
             searchValue,
             setSearchValue,
             searchedTodos,
+            listTodos,
+            setFilterTodo,
             completeTodo,
             deleteTodo,
             loading,

@@ -6,7 +6,7 @@
 
 .Arrow-movement {
   position: fixed;
-  width: 10%;
+  width: 150px;
   height: 10%;
   display: flex;
   align-items: center;

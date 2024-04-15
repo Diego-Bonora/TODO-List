@@ -10,12 +10,16 @@ import { TodoSearchEmpty } from '../TodoEmpty/TodoSearchEmpty';
 import { TodoContext } from '../TodoContext/TodoContext';
 import { Modal } from '../Modal/Modal';
 import { TodoForm } from '../TodoForm/TodoForm';
+import { TodoFilter } from '../TodoFilter/TodoFilter';
 import React from 'react';
+import './AppUI.css'
 
 function AppUI() {
     const {
         searchedTodos,
+        listTodos,
         completeTodo,
+        setFilterTodo,
         deleteTodo,
         totalTodos,
         loading,
@@ -28,8 +32,10 @@ function AppUI() {
         <>
 
             <TodoCounter />
-            <TodoSearch />
-
+            <div className='TodoSearchContainer'>
+                <TodoSearch />
+                <TodoFilter setFilterTodo={setFilterTodo} />
+            </div>
             <TodoList>
                 {loading && (
                     <>
@@ -42,7 +48,7 @@ function AppUI() {
                 {(!loading && totalTodos === 0) && <TodoEmpty />}
                 {(!loading && searchedTodos.length === 0 && totalTodos >= 1) && <TodoSearchEmpty />}
 
-                {searchedTodos.map(todo => (
+                {listTodos.map(todo => (
                     <TodoItem
                         key={todo.text}
                         text={todo.text}

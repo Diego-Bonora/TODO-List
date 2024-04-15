@@ -1,0 +1,53 @@
+.FilterContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.FilterButton {
+  height: 25px;
+  cursor: pointer;
+  background: #f9fbfc;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-weight: 500;
+  border: 2px solid #202329;
+}
+
+.FilterButton:hover {
+  border-color: #61dafa;
+}
+
+.FilterList-container {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #202329;
+  max-height: 80px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.FilterList-item {
+  height: 40px;
+  cursor: pointer;
+  width: 100%;
+  background: #f9fbfc;
+  border: 0.5px solid #202329;
+  font-family: "Montserrat";
+}
+
+.FilterList-item:hover {
+  border: 2px solid #61dafa;
+}
+
+.FilterList-container::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+.FilterList-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
